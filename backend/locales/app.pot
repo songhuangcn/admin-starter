@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE VERSION package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-14 03:15+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../internal/common/auth/auth.go:44 ../internal/common/auth/auth.go:48
+msgid "登录已失效"
+msgstr ""
+
+#: ../internal/model/permission.go:39
+msgid "controller|user"
+msgstr ""
+
+#: ../internal/model/permission.go:40
+msgid "controller|role"
+msgstr ""
+
+#: ../internal/model/permission.go:48
+msgid "action|index"
+msgstr ""
+
+#: ../internal/model/permission.go:49
+msgid "action|create"
+msgstr ""
+
+#: ../internal/model/permission.go:50
+msgid "action|update"
+msgstr ""
+
+#: ../internal/model/permission.go:51
+msgid "action|delete"
+msgstr ""
+
+#: ../internal/service/srvimpl/permission_service.go:60
+msgid "您没有权限"
+msgstr ""
+
+#: ../internal/service/srvimpl/session_service.go:20
+#: ../internal/service/srvimpl/session_service.go:43
+msgid "用户名或密码错误"
+msgstr ""
+
+#: ../internal/service/srvimpl/session_service.go:56
+msgid "Token 已失效"
+msgstr ""
+

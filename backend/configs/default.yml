@@ -1,0 +1,18 @@
+# 以下配置都可以通过环境变量覆盖
+# 环境变量名称规则为全大写，通过小数点嵌套，例如：MYSQL.PASSWORD
+app:
+  name: Admin Starter
+  url: https://admin-template.hdgcs.com/
+  port: 3000
+  secret: 2ab49fa1bad34c152851fa2100ea1ecd68d72a45cbda2396fff39382837fbcd720cd69be9711bb762c9e21bf204ff4a96809577de437e8c7c3d60b0e6fd9578c
+  gin_mode: debug # debug, release
+  log_level: trace # trace, debug, info, warn, error, fatal, panic
+auth:
+  jwt_exp_hours: 168 # 一周，7 * 24 = 168
+mysql:
+  host: database
+  port: 3306
+  username: root
+  password: password
+  database: admin_starter_development
+  options: charset=utf8mb4&parseTime=True&loc=Local

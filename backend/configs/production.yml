@@ -1,0 +1,6 @@
+app:
+  name: Admin Starter
+  url: https://admin-template.hdgcs.com
+  secret: # 清除默认值，请通过 ENV['APP.SECRET'] 设置
+  gin_mode: release
+  log_level: info

@@ -1,0 +1,68 @@
+services:
+  backend:
+    image: ${IMAGE_PROXY:-}admin-template-backend:dev
+    build:
+      context: ./backend
+      target: dev
+      args:
+        IMAGE_PROXY: ${IMAGE_PROXY:-}
+    environment:
+      DATABASE_HOST: mysql
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: password
+      APP.PORT: ${BACKEND_PORT:-3000}
+      MYSQL.PORT: ${DB_PORT:-3306}
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+      - dev_go:/go
+    stdin_open: true
+    tty: true
+    depends_on:
+      database:
+        condition: service_healthy
+    command: go run main.go
+    ports:
+      - "${BACKEND_PORT:-3000}:${BACKEND_PORT:-3000}"
+  frontend:
+    image: ${IMAGE_PROXY:-}admin-template-frontend:dev
+    build:
+      context: ./frontend
+      target: dev
+      args:
+        IMAGE_PROXY: ${IMAGE_PROXY:-}
+        NPM_MIRROR: https://mirrors.tencent.com/npm/
+    platform: linux/amd64
+    environment:
+      VITE_API_BASE_URL: "http://localhost:${BACKEND_PORT:-3000}"
+    command: bash -c "pnpm dev --host 0.0.0.0 --port ${FRONTEND_PORT:-4000}"
+    volumes:
+      - ./frontend:/app
+      - dev_pnpm_store:/pnpm-store
+      - dev_pnpm_virtual:/app/node_modules
+    ports:
+      - "${FRONTEND_PORT:-4000}:${FRONTEND_PORT:-4000}"
+  database:
+    image: ${IMAGE_PROXY:-}mysql:8.0
+    ports:
+      - "${DB_PORT:-3306}:${DB_PORT:-3306}"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      TZ: Asia/Shanghai
+      MYSQL_DATABASE: admin_starter_development
+      MYSQL_TCP_PORT: ${DB_PORT:-3306}
+    volumes:
+      - dev_database:/var/lib/mysql
+      - ./backend/scripts/db.sql:/docker-entrypoint-initdb.d/db.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  dev_pnpm_store:
+  dev_pnpm_virtual:
+  dev_go:
+  dev_database:
