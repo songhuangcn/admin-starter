@@ -2,7 +2,8 @@
 
 # Admin Starter
 
-Golang 管理系统启动器。其他语言版本：
+Golang 管理系统启动器。相关链接：
+- 博文：[如何做好一个软件项目](https://hdgcs.com/posts/28-how-to-make-better-project)
 - Ruby 版：[Admin Template](https://github.com/songhuangcn/admin-template)
 
 ## 功能
